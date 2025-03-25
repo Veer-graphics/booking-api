@@ -34,7 +34,8 @@ router.get('/:id', async (req, res, next) => {
             return res.status(200).json(user);
         }
     } catch (error) {
-        next(error);
+        console.error(`Error fetching user: ${error.message}`);
+        return res.status(500).json({ message: 'Internal server error' });
     }
 });
 
